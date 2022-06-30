@@ -1,0 +1,56 @@
+﻿<Window x:Class="course_proj_english_tutorial.VocabularyCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:course_proj_english_tutorial"
+        mc:Ignorable="d"
+        Title="VocabularyCreateWindow" SizeToContent="Height" WindowStartupLocation="CenterScreen" MinWidth="360" Width="360" MaxWidth="360">
+    <Grid MinWidth="360" MaxWidth="360">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Слова" MinHeight="150" Margin="5,5" BorderBrush="Black" BorderThickness="1" Width="340">
+                <Grid Width="300" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.8*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Height="25" VerticalAlignment="Top" Width="300" Grid.Row="0" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Слово" HorizontalAlignment="Left" />
+                        <Label Content="Перевод" HorizontalAlignment="Right" Grid.Column="1"/>
+                    </Grid>
+                    <ListBox x:Name="VocabularyObjects" Visibility="Visible" Grid.Row="1" MaxHeight="200" Width="300">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Visibility="Visible" Height="60" MinHeight="60" MaxHeight="60" Width="300">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding Word}" Grid.Column="0" HorizontalAlignment="Left" BorderBrush="Black" MinWidth="70" MinHeight="25" MaxHeight="25"/>
+                                    <TextBox Text="{Binding Definition}" Grid.Column="1" HorizontalAlignment="Right" BorderBrush="Black" MinWidth="70" MinHeight="25" MaxHeight="25"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </GroupBox>
+            <Button Grid.Row="1" MaxWidth="115" Margin="5,5" HorizontalAlignment="Left" Content="Добавить значение" Click="AddElement_Click"/>
+        </Grid>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,15,0,0">
+            <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="0,0,10,0">Создать</Button>
+            <Button IsCancel="True" MinWidth="60">Отмена</Button>
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,132 @@
+﻿<Window x:Class="course_proj_english_tutorial.JournalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:course_proj_english_tutorial"
+        mc:Ignorable="d"
+        Title="JournalWindow" MinHeight="600" Height="600" MinWidth="960" Width="960" MaxHeight="600" MaxWidth="960">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".6*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Список записей в журнале" HorizontalAlignment="Stretch" MinHeight="130" Height="134" Margin="23,24,29,10" VerticalAlignment="Stretch" MinWidth="740" Width="740" Grid.Row="0">
+            <ListBox x:Name="JournalEntriesBox" SelectionChanged="OnJournalSelected_Event">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <GroupBox BorderBrush="Black" BorderThickness="1.5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Период проведения занятий:" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="{Binding TimePeriod}" Grid.Row="0" Grid.Column="1"/>
+                            <Label Content="Класс:" Grid.Row="1" Grid.Column="0"/>
+                            <Label Content="{Binding Grade}" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                        </GroupBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".75*"/>
+                <RowDefinition Height=".25*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <GroupBox Header="Список преподавателей" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,10,35,44" MinHeight="150" MinWidth="350" Width="350">
+                        <ListBox x:Name="TeachersBox" SelectionChanged="OnSelectedTeacherChanged_Event">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <GroupBox MinWidth="310" Width="310">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="ФИО: " Grid.Row="0" Grid.Column="0"/>
+                                            <Label Content="Стаж работы: " Grid.Row="1" Grid.Column="0"/>
+                                            <Label Content="{Binding UserName}"  Grid.Row="0" Grid.Column="1"/>
+                                            <Label Content="{Binding WorkExperience}"  Grid.Row="1" Grid.Column="1"/>
+                                        </Grid>
+                                    </GroupBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </GroupBox>
+                    <Grid Width="350" MinWidth="350">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Удалить" Grid.Column="0" MinHeight="25" Height="25" MaxHeight="25" MinWidth="100" MaxWidth="100" Width="100" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="10,0,65,0" Click="DetachTeacher_clicked"/>
+                        <Button Content="Добавить" MinHeight="25" Height="25" MaxHeight="25" MinWidth="100" MaxWidth="100" Width="100" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="75,0,0,0" Grid.Column="1" Click="AttachTeacher_Clicked"/>
+                    </Grid>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Список учеников" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,10,35,44" MinHeight="150" MinWidth="350" Width="350">
+                        <ListBox x:Name="StudentsBox" SelectionChanged="OnSelectedStudentChanged_Event">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <GroupBox MinWidth="310" Width="310">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="ФИО: " Grid.Row="0" Grid.Column="0"/>
+                                            <Label Content="Класс: " Grid.Row="1" Grid.Column="0"/>
+                                            <Label Content="{Binding UserName}"  Grid.Row="0" Grid.Column="1"/>
+                                            <Label Content="{Binding Grade}"  Grid.Row="1" Grid.Column="1"/>
+                                        </Grid>
+                                    </GroupBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </GroupBox>
+                    <Grid Width="350" MinWidth="350">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Удалить" Grid.Column="0" MinHeight="25" Height="25" MaxHeight="25" MinWidth="100" MaxWidth="100" Width="100" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="10,0,65,0" Click="DetachStudent_clicked"/>
+                        <Button Content="Добавить" MinHeight="25" Height="25" MaxHeight="25" MinWidth="100" MaxWidth="100" Width="100" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="75,0,0,0" Grid.Column="1" Click="AttachStudent_Clicked"/>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+            
+            <Button Content="&lt;" Grid.Row="1" HorizontalAlignment="Stretch" Margin="45,19,767,21" VerticalAlignment="Stretch" MaxHeight="30" Height="30" MaxWidth="30" Width="30" RenderTransformOrigin="-1.961,0.443" Click="GoBack_Clicked"/>
+            <Button Content="Добавить запись в журнал" HorizontalAlignment="Stretch" Margin="118,22,549,23" VerticalAlignment="Stretch" MinWidth="170" MaxWidth="170" MinHeight="25" MaxHeight="25" Grid.Row="1" Click="AddEntry_Clicked" RenderTransformOrigin="0.418,0.735"/>
+            <Button Content="Удалить запись из журнала" HorizontalAlignment="Stretch" Margin="567,22,100,23" VerticalAlignment="Stretch" MinWidth="170" MaxWidth="170" MinHeight="25" MaxHeight="25" Grid.Row="1" Click="RemoveEntry_Clicked" RenderTransformOrigin="0.418,0.735"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

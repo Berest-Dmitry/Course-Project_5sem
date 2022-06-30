@@ -1,0 +1,28 @@
+﻿<Window x:Class="course_proj_english_tutorial.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:course_proj_english_tutorial"
+        mc:Ignorable="d"
+        Title="SignInWindow" Height="510" Width="870" MinHeight="510" MaxHeight="510" MinWidth="870" MaxWidth="870">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox Text="{Binding UserName}" HorizontalAlignment="Stretch" Height="23" MaxHeight="23" Margin="147,56,165,26" TextWrapping="Wrap" VerticalAlignment="Stretch" MaxWidth="480" Width="480" Grid.Row="0"/>
+            <Label Content="Имя пользователя" HorizontalAlignment="Stretch" Margin="147,26,495,49" VerticalAlignment="Stretch" MaxWidth="150" Width="150" MaxHeight="30" Height="30" Grid.Row="0"/>
+
+            <TextBox Text="{Binding Password}" HorizontalAlignment="Stretch" Height="23" MaxHeight="23" Margin="147,56,165,26" TextWrapping="Wrap" VerticalAlignment="Stretch" MaxWidth="480" Width="480" Grid.Row="1"/>
+            <Label Content="Пароль" HorizontalAlignment="Stretch" Margin="147,26,545,49" VerticalAlignment="Stretch" MaxWidth="100" Width="100" MaxHeight="30" Height="30" Grid.Row="1"/>
+        </Grid>
+        <Button Content="Войти" HorizontalAlignment="Stretch" Margin="346,47,346,30" Grid.Row="1" VerticalAlignment="Stretch" Width="150" MinWidth="150" Height="40" MinHeight="40" Click="LoginUser_Clicked"/>
+
+    </Grid>
+</Window>
